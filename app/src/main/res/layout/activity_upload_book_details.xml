@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Upload_book_details">
+    tools:context=".Upload_book_details"
+    android:background="@drawable/gradient_my">
 
     <ImageView
         android:id="@+id/imageView1"
@@ -16,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/book" />
+        app:srcCompat="@drawable/books" />
 
     <TextView
         android:id="@+id/textView"
@@ -33,44 +34,86 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView1"
         app:layout_constraintVertical_bias="0.031" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="240dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/BookName"
         android:layout_width="360dp"
         android:layout_height="50dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="240dp"
         android:background="@drawable/input"
         android:hint="Book Name"
         android:paddingLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+            android:inputType="text"
+            android:nextFocusDown="@id/AuthorName"
+            />
 
-    <EditText
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="320dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/AuthorName"
         android:layout_width="360dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
         android:background="@drawable/input"
         android:hint="Author Name"
         android:paddingLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BookName" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text"
+        android:nextFocusDown="@id/Description"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/branch"
+
+
+
+        <Spinner
+            android:id="@+id/branchSpinner"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="380dp"
+            android:background="@drawable/input"
+            android:entries="@array/branch_options"
+            android:hint="Branch"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/greeyLight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView1" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/input"
-        android:hint="Branch(IT/CSE/ECE)"
-        android:paddingLeft="20dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="480dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AuthorName" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/Description"
+    <com.google.android.material.textfield.TextInputEditText          android:id="@+id/Description"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
@@ -79,7 +122,11 @@
         android:paddingLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/branch" />
+        app:layout_constraintTop_toBottomOf="@+id/branch"
+        android:inputType="text"
+        android:nextFocusDown="@id/registerBtn"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/registerBtn"

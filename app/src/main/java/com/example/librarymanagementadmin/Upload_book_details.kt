@@ -19,19 +19,22 @@ class Upload_book_details : AppCompatActivity() {
 
             val BookName = binding.BookName.text.toString()
             val AuthorName = binding.AuthorName.text.toString()
-            val branch = binding.branch.text.toString()
+            val branch = binding.branchSpinner.selectedItem.toString()
             val Description = binding.Description.text.toString()
 
             database = FirebaseDatabase.getInstance().getReference("Book_details")
-            val Book_details = book_details(BookName,AuthorName,branch,Description)
+
+            val Book_details = book_details(BookName ,AuthorName,branch,Description)
+
             database.child(BookName).setValue(Book_details).addOnSuccessListener {
 
-                binding.BookName.text.clear()
-                binding.AuthorName.text.clear()
-                binding.branch.text.clear()
-                binding.Description.text.clear()
+                binding.BookName.text!!.clear()
+                binding.AuthorName.text!!.clear()
+//                binding.branch.text!!.clear()clear
+                binding.Description.text!!.clear()
 
                 Toast.makeText(this,"Successfully Saved",Toast.LENGTH_SHORT).show()
+                finish()
 
             }.addOnFailureListener{
 

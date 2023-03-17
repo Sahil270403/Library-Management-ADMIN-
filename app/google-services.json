@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "782949017151",
+    "firebase_url": "https://library-management-5ad54-default-rtdb.firebaseio.com",
     "project_id": "library-management-5ad54",
     "storage_bucket": "library-management-5ad54.appspot.com"
   },
@@ -50,6 +51,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "782949017151-m2nrhraavaj1r22vvik5rsgunfu324pq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.librarymanagementadmin",
+            "certificate_hash": "2bae5ad643e796a181582683b2c9f507dd3dc95c"
+          }
+        },
         {
           "client_id": "782949017151-0ojg184ad87b13r0b3thue5jkmhgq7c9.apps.googleusercontent.com",
           "client_type": 3

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Library Management (ADMIN)</string>
+    <string-array name="branch_options">
+        <item>IT</item>
+        <item>CSE</item>
+        <item>ECE</item>
+    </string-array>
 </resources>
