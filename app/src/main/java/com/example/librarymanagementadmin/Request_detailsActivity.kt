@@ -36,38 +36,57 @@ class Request_detailsActivity : AppCompatActivity() {
         binding.IssuerName.text = issueName
         binding.Rollno.text = rollno
 
+        val database = FirebaseDatabase.getInstance().reference.child("Issued_Books")
+
         binding.idaccept.setOnClickListener {
 
-            val currentDate = HashMap<String, Any>()
-            currentDate["date"] = ServerValue.TIMESTAMP
-            database = FirebaseDatabase.getInstance().getReference("Issued_Books")
+            val currentTimestamp = System.currentTimeMillis()
 
-//            databases = FirebaseDatabase.getInstance().getReference("Issue_details_request")
+            val endDateTimestamp = currentTimestamp + (86400000 * 14)
 
-            val issued_books = issued_books(bookName, authorName, branch, issueName, rollno, currentDate)
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = endDateTimestamp
 
-            database.child(issueName.toString()).setValue(issued_books).addOnSuccessListener{
-                Toast.makeText(this,"Request Accepted", Toast.LENGTH_SHORT).show()
-                finish()
+            val currentDate = hashMapOf(
+                "date" to currentTimestamp
+            )
 
-            }.addOnFailureListener{
+            val endDate = hashMapOf(
+                "date" to endDateTimestamp
+            )
 
-                Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
-            }
 
+            val issued_books = issued_books(bookName, authorName, branch, issueName, rollno, currentDate,endDate)
+
+
+            // Write the "issued_books" object to the database
+            database.child(issueName.toString()).setValue(issued_books)
+                .addOnSuccessListener {
+                    Toast.makeText(this,"Request Accepted", Toast.LENGTH_SHORT).show()
+                    val databases = FirebaseDatabase.getInstance().getReference("Issue_details_request")
+                    val childRef = databases.child(issueName!!)
+                    childRef.removeValue().addOnSuccessListener {
+                        finish()
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
+                }
         }
 
-
         binding.idreject.setOnClickListener {
-                databases = FirebaseDatabase.getInstance().getReference("Issue_details_request")
-                val childRef = databases.child(issueName!!)
-                childRef.removeValue().addOnSuccessListener {
-                    Toast.makeText(this, "Request Rejected", Toast.LENGTH_SHORT).show()
-                    finish()
-                }.addOnFailureListener {
-                    Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+            val databases = FirebaseDatabase.getInstance().getReference("Issue_details_request")
+            val childRef = databases.child(issueName!!)
+            childRef.removeValue().addOnSuccessListener {
+                Toast.makeText(this, "Request Rejected", Toast.LENGTH_SHORT).show()
+                finish()
+            }.addOnFailureListener {
+                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
 
-                }
             }
         }
     }
+
+}

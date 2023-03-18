@@ -2,8 +2,10 @@ package com.example.librarymanagementadmin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.librarymanagementadmin.databinding.ActivityRequestIssueRecievedBinding
 import com.example.librarymanagementadmin.models.issue_details
 import com.google.firebase.database.*
 
@@ -11,11 +13,13 @@ class RequestIssueRecievedActivity : AppCompatActivity() {
 
     private lateinit var dbref : DatabaseReference
     private lateinit var userRecyclerview : RecyclerView
+    private lateinit var binding: ActivityRequestIssueRecievedBinding
     private lateinit var userArrayList : ArrayList<issue_details>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_request_issue_recieved)
+        binding = ActivityRequestIssueRecievedBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 //        val recyclerView = findViewById<RecyclerView>(R.id.sortNameRecyclerView)
 //        recyclerView.layoutManager = LinearLayoutManager(this)
@@ -51,7 +55,6 @@ class RequestIssueRecievedActivity : AppCompatActivity() {
                         userRecyclerview.adapter = BookAdapter(userArrayList)
                     }
                 }
-
 
                 override fun onCancelled(error: DatabaseError) {
                     // Handle error
