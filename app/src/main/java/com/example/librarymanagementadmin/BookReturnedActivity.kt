@@ -3,67 +3,59 @@ package com.example.librarymanagementadmin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.librarymanagementadmin.databinding.ActivityRequestDetailsBinding
+import com.example.librarymanagementadmin.databinding.ActivityBookReturnedBinding
 import com.example.librarymanagementadmin.models.issued_books
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
-class Request_detailsActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityRequestDetailsBinding
+class BookReturnedActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityBookReturnedBinding
     private lateinit var database: DatabaseReference
     private lateinit var databases: DatabaseReference
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRequestDetailsBinding.inflate(layoutInflater)
+        binding = ActivityBookReturnedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         val bookName = intent.getStringExtra("BookName")
         val authorName = intent.getStringExtra("AuthorName")
         val branch = intent.getStringExtra("Branch")
         val issueName = intent.getStringExtra("IssueName")
         val rollno = intent.getStringExtra("Rollno")
-
-
+        val startDate = intent.getStringExtra("IssueDate")
+        val endDate = intent.getStringExtra("ReturnDate")
         binding.idTVTitle.text = bookName
         binding.idTVSubTitle.text = authorName
         binding.idTVbranch.text = branch
         binding.IssuerName.text = issueName
         binding.Rollno.text = rollno
+        binding.IssueDate.text = startDate
+        binding.LreturnDate.text = endDate
 
-        database = FirebaseDatabase.getInstance().reference.child("Issued_Books")
+        database = FirebaseDatabase.getInstance().reference.child("Returned_Books")
+        binding.idmark.setOnClickListener {
 
-        binding.idaccept.setOnClickListener {
+            val lreturnDate = HashMap<String, Any>()
+            lreturnDate["date"] = ServerValue.TIMESTAMP
 
-            val currentTimestamp = System.currentTimeMillis()
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val date = dateFormat.parse(startDate.toString()) // convert start date to Date object
+            val timestamp = date!!.time // get time in milliseconds
+            val issueDate = HashMap<String, Any>()
+            issueDate["date"] = timestamp
 
-            val endDateTimestamp = currentTimestamp + (86400000 * 10)
-
-            val calendar = Calendar.getInstance()
-            calendar.timeInMillis = endDateTimestamp
-
-            val currentDate = hashMapOf(
-                "date" to currentTimestamp
-            )
-
-            val endDate = hashMapOf(
-                "date" to endDateTimestamp
-            )
-
-
-            val issued_books = issued_books(bookName, authorName, branch, issueName, rollno, currentDate,endDate)
+            val issued_books = issued_books(bookName, authorName, branch, issueName, rollno, issueDate,lreturnDate)
 
 
             // Write the "issued_books" object to the database
             database.child(issueName.toString()).setValue(issued_books)
                 .addOnSuccessListener {
                     Toast.makeText(this,"Request Accepted", Toast.LENGTH_SHORT).show()
-                    val databases = FirebaseDatabase.getInstance().getReference("Issue_details_request")
+                    val databases = FirebaseDatabase.getInstance().getReference("Issued_Books")
                     val childRef = databases.child(issueName!!)
                     childRef.removeValue().addOnSuccessListener {
                         finish()
@@ -76,17 +68,6 @@ class Request_detailsActivity : AppCompatActivity() {
                 }
         }
 
-        binding.idreject.setOnClickListener {
-             databases = FirebaseDatabase.getInstance().getReference("Issue_details_request")
-            val childRef = databases.child(issueName!!)
-            childRef.removeValue().addOnSuccessListener {
-                Toast.makeText(this, "Request Rejected", Toast.LENGTH_SHORT).show()
-                finish()
-            }.addOnFailureListener {
-                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
-
-            }
-        }
     }
 
 }

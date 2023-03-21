@@ -41,7 +41,9 @@
         android:layout_marginTop="240dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint="@color/greeyLight"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/BookName"
@@ -67,7 +69,9 @@
         android:layout_marginTop="320dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint="@color/greeyLight"
+        >
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/AuthorName"
@@ -111,7 +115,9 @@
         android:layout_marginTop="480dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint="@color/greeyLight"
+        >
 
     <com.google.android.material.textfield.TextInputEditText          android:id="@+id/Description"
         android:layout_width="360dp"
@@ -125,6 +131,7 @@
         app:layout_constraintTop_toBottomOf="@+id/branch"
         android:inputType="text"
         android:nextFocusDown="@id/registerBtn"
+        android:textColorHint="@color/greeyLight"
         />
     </com.google.android.material.textfield.TextInputLayout>
 

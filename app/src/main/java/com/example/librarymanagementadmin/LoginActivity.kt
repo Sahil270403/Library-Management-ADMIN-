@@ -4,7 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat.startActivity
@@ -20,12 +22,12 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth : FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-
+    private lateinit var progressBar:ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
             auth = FirebaseAuth.getInstance()
+            progressBar = findViewById(R.id.progressBar1)
 
 
             val check = GoogleSignIn.getLastSignedInAccount(this)
@@ -45,6 +47,7 @@ class LoginActivity : AppCompatActivity() {
             googleSignInClient = GoogleSignIn.getClient(this , gso)
 
             findViewById<Button>(R.id.gSignInBtn).setOnClickListener {
+                progressBar.visibility = View.VISIBLE
                 signInGoogle()
             }
         }
@@ -83,6 +86,7 @@ class LoginActivity : AppCompatActivity() {
 
             auth.signInWithCredential(credential).addOnCompleteListener{
                 if(it.isSuccessful){
+//                    ProgressBar.visibility = View.GONE
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()

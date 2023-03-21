@@ -21,13 +21,6 @@ class RequestIssueRecievedActivity : AppCompatActivity() {
         binding = ActivityRequestIssueRecievedBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val recyclerView = findViewById<RecyclerView>(R.id.sortNameRecyclerView)
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//
-//        val userList = ArrayList<issue_details>() // replace with your list of issue details
-//
-//        val adapter = BookAdapter(userList)
-//        recyclerView.adapter = adapter
         userRecyclerview = findViewById(R.id.sortNameRecyclerView)
         userRecyclerview.layoutManager = LinearLayoutManager(this)
         userRecyclerview.setHasFixedSize(true)
@@ -54,6 +47,7 @@ class RequestIssueRecievedActivity : AppCompatActivity() {
 
                         userRecyclerview.adapter = BookAdapter(userArrayList)
                     }
+                    binding.progressBar2.visibility = View.GONE
                 }
 
                 override fun onCancelled(error: DatabaseError) {
