@@ -44,7 +44,7 @@ class Returned_bookActivity : AppCompatActivity() {
                         userArrayList.add(user!!)
                     }
 
-                    userRecyclerview.adapter = IssuedBookAdapter(userArrayList)
+                    userRecyclerview.adapter = ReturnedBookAdapter(userArrayList)
                 }
                 binding.progressBar4.visibility = View.GONE
             }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Upload_book_details"
+    tools:context=".Update_Book_detailsActivity"
     android:background="@drawable/gradient_my">
 
     <ImageView
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:text="Upload The Book Details"
+        android:text="Update The Book Details"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,16 +47,16 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/BookName"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="240dp"
-        android:background="@drawable/input"
-        android:hint="Book Name"
-        android:paddingLeft="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/BookName"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="240dp"
+            android:background="@drawable/input"
+            android:hint="Book Name"
+            android:paddingLeft="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/black"
             android:inputType="text"
             android:nextFocusDown="@id/AuthorName"
@@ -76,41 +76,41 @@
         android:textColor="@color/black"
         >
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/AuthorName"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:background="@drawable/input"
-        android:hint="Author Name"
-        android:paddingLeft="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:inputType="text"
-        android:nextFocusDown="@id/Description"
-        android:textColor="@color/black"
-        />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/AuthorName"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:background="@drawable/input"
+            android:hint="Author Name"
+            android:paddingLeft="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="text"
+            android:nextFocusDown="@id/Description"
+            android:textColor="@color/black"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
 
 
 
-        <Spinner
-            android:id="@+id/branchSpinner"
-            android:layout_width="360dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="380dp"
-            android:background="@drawable/input"
-            android:entries="@array/branch_options"
-            android:hint="Branch"
-            android:paddingLeft="20dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/greeyLight"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView1"
-            />
+    <Spinner
+        android:id="@+id/branchSpinner"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="380dp"
+        android:background="@drawable/input"
+        android:entries="@array/branch_options"
+        android:hint="Branch"
+        android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/greeyLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView1"
+        />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -125,31 +125,31 @@
         android:textColor="@color/black"
         >
 
-    <com.google.android.material.textfield.TextInputEditText          android:id="@+id/Description"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/input"
-        android:hint="Description"
-        android:paddingLeft="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/branch"
-        android:inputType="text"
-        android:nextFocusDown="@id/registerBtn"
-        android:textColorHint="@color/greeyLight"
-        android:textColor="@color/black"
-        />
+        <com.google.android.material.textfield.TextInputEditText          android:id="@+id/Description"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/input"
+            android:hint="Description"
+            android:paddingLeft="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/branch"
+            android:inputType="text"
+            android:nextFocusDown="@id/registerBtn"
+            android:textColorHint="@color/greeyLight"
+            android:textColor="@color/black"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/registerBtn"
+        android:id="@+id/updateBtn"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="612dp"
         android:backgroundTint="@color/teal_200"
-        android:text="Upload"
+        android:text="Update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
