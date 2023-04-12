@@ -28,6 +28,10 @@ class BookReturnedActivity : AppCompatActivity() {
         val rollno = intent.getStringExtra("Rollno")
         val startDate = intent.getStringExtra("IssueDate")
         val endDate = intent.getStringExtra("ReturnDate")
+        val uid = intent.getStringExtra("UID")
+
+
+
         binding.idTVTitle.text = bookName
         binding.idTVSubTitle.text = authorName
         binding.idTVbranch.text = branch
@@ -48,13 +52,15 @@ class BookReturnedActivity : AppCompatActivity() {
             val issueDate = HashMap<String, Any>()
             issueDate["date"] = timestamp
 
-            val issued_books = issued_books(bookName, authorName, branch, issueName, rollno, issueDate,lreturnDate)
+            val issued_books = issued_books(bookName, authorName, branch, issueName, rollno, issueDate,lreturnDate,
+                uid!!
+            )
 
 
             // Write the "issued_books" object to the database
             database.child(issueName.toString()).setValue(issued_books)
                 .addOnSuccessListener {
-                    Toast.makeText(this,"Request Accepted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"BOOK RETURNED", Toast.LENGTH_SHORT).show()
                     val databases = FirebaseDatabase.getInstance().getReference("Issued_Books")
                     val childRef = databases.child(issueName!!)
                     childRef.removeValue().addOnSuccessListener {

@@ -28,6 +28,7 @@ class Request_detailsActivity : AppCompatActivity() {
         val branch = intent.getStringExtra("Branch")
         val issueName = intent.getStringExtra("IssueName")
         val rollno = intent.getStringExtra("Rollno")
+        val uid = intent.getStringExtra("UID")
 
 
         binding.idTVTitle.text = bookName
@@ -56,7 +57,9 @@ class Request_detailsActivity : AppCompatActivity() {
             )
 
 
-            val issued_books = issued_books(bookName, authorName, branch, issueName, rollno, currentDate,endDate)
+            val issued_books = issued_books(bookName, authorName, branch, issueName, rollno, currentDate,endDate,
+                uid!!
+            )
 
 
             // Write the "issued_books" object to the database

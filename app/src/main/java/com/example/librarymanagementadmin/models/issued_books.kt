@@ -7,7 +7,8 @@ data class issued_books(
     val issuerName: String? = null,
     val rollNo: String? = null,
     var startDate: Map<String, Any>? = null,
-    var endDate: Map<String, Any>? = null
+    var endDate: Map<String, Any>? = null,
+    val uids:String =""
 )
 
 

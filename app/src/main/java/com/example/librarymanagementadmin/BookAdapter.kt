@@ -44,6 +44,8 @@ class BookAdapter(private val userList: ArrayList<issue_details>) : RecyclerView
             intent.putExtra("Branch", currentitem.branch)
             intent.putExtra("IssueName", currentitem.userName)
             intent.putExtra("Rollno", currentitem.rollNo)
+            intent.putExtra("UID", currentitem.uids)
+
             context.startActivity(intent)
         }
     }

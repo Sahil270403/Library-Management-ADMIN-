@@ -52,6 +52,7 @@ class IssuedBookAdapter(private val userList: ArrayList<issued_books>) : Recycle
             intent.putExtra("Rollno", currentitem.rollNo)
             intent.putExtra("IssueDate", formattedDate)
             intent.putExtra("ReturnDate", formattedDate1)
+            intent.putExtra("UID",currentitem.uids)
             context.startActivity(intent)
         }
     }
