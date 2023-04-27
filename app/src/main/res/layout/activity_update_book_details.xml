@@ -58,7 +58,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/black"
-            android:inputType="text"
+            android:inputType="textPersonName"
             android:nextFocusDown="@id/AuthorName"
             />
 
@@ -86,7 +86,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:inputType="text"
+            android:inputType="textPersonName"
             android:nextFocusDown="@id/Description"
             android:textColor="@color/black"
             />

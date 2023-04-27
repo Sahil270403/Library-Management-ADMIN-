@@ -31,16 +31,20 @@ class Update_Book_detailsActivity : AppCompatActivity() {
 
         binding.updateBtn.setOnClickListener {
 
-            val bookName = binding.BookName.text.toString()
-            val authorName = binding.AuthorName.text.toString()
-            val branch = binding.branchSpinner.selectedItem.toString()
-            val description = binding.Description.text.toString()
+            val bookName = binding.BookName.text.toString().trim()
+            val authorName = binding.AuthorName.text.toString().trim()
+            val branch = binding.branchSpinner.selectedItem.toString().trim()
+            val description = binding.Description.text.toString().trim()
 
-            if (BookName != null) {
-                updateData(bookName,authorName,branch,description,BookName)
+
+            if(BookName!!.isEmpty() || authorName.isEmpty() || branch.isEmpty() || description.isEmpty() || bookName.isEmpty()){
+                Toast.makeText(this,"Empty Input",Toast.LENGTH_SHORT).show()
             }
-
+             else {
+                updateData(bookName, authorName, branch, description,BookName)
+            }
         }
+
 
     }
 
