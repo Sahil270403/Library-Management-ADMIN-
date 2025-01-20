@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "782949017151-j4jfck53n74lertc95157nae5en7i5p0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.librarymanagement",
+            "certificate_hash": "be3a7733ac40c386158a55103e6f4b61f7010a8a"
+          }
+        },
+        {
           "client_id": "782949017151-0ojg184ad87b13r0b3thue5jkmhgq7c9.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -51,6 +59,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "782949017151-6ocrg3lp1suocpe1ta0ab0t1f1ltu2pq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.librarymanagementadmin",
+            "certificate_hash": "be3a7733ac40c386158a55103e6f4b61f7010a8a"
+          }
+        },
         {
           "client_id": "782949017151-m2nrhraavaj1r22vvik5rsgunfu324pq.apps.googleusercontent.com",
           "client_type": 1,
